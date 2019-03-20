@@ -1,0 +1,48 @@
+{% for product in products %}
+                        <!-- Single Product --><a href="{{ product.get_absolute_url }}">
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="single-product-wrapper carousel__item">
+                                <!-- Product Image -->
+                                <div class="product-img">
+                                    <img src="{{ product.image.url }}" alt="">
+                                    <!-- Hover Thumb -->
+                                    <img class="hover-img" src="{{ product.images.all.first.image.url }}" alt="">
+
+                                    <!-- Product Badge -->
+                                    {% if product.in_sale == True %}
+                                    <div class="product-badge offer-badge">
+                                        <span>Sale</span>
+                                    </div>
+                                    {% elif product.is_new == True %}
+                                    <div class="product-badge new-badge">
+                                        <span>New</span>
+                                    </div>
+                                    {% endif %}
+                                    <!-- Favourite -->
+<!--                                     <div class="product-favourite">
+                                        <a href="#" class="favme fa fa-heart"></a>
+                                    </div> -->
+                                </div>
+
+                                <!-- Product Description -->
+                                <div class="product-description">
+                                    <span>{{ product.model_phone.title }}</span>
+                                    <a href="{{ product.get_absolute_url }}">
+                                        <h6>{{ product.head_title }}</h6>
+                                    </a>
+                                    {% if product.in_sale == True %}
+                                    <p class="product-price"><span class="old-price">{{ product.price }} грн</span> {{ product.sale_price }} грн</p>
+                                    {% else %}
+                                    <p class="product-price">{{ product.price }} грн</p>
+                                    {% endif %}
+                                    <!-- Hover Content -->
+                                    <div class="hover-content">
+                                        <!-- Add to Cart -->
+                                        <div class="add-to-cart-btn">
+                                            <a href="#" class="btn essence-btn add_to_b add_product_js" data-id="{{ product.id }}">Добавить в корзину</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></a>
+{% endfor %}

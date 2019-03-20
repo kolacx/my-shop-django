@@ -1,0 +1,22 @@
+<div>
+    <table>
+        <thead>
+        <th style="width: 1%;">№</th>
+        <th style="width: 5%">ID товара</th>
+        <th style="width: 5%">Категория</th>
+        <th style="width: 40%">Наименование</th>
+        </thead>
+        <tbody>
+        {% for item in card.items.all %}
+            <tr>
+            <td>{{ forloop.counter }}</td>
+                <td>{% if item.product.id %}{{ item.product.id }}{% else %}-{% endif %}</td>
+                <td>{% if item.product.category %}{{ item.product.category.title }}{% else %}-{% endif %}</td>
+            <td>{{ item.product }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+</div>

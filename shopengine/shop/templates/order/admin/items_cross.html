@@ -1,0 +1,22 @@
+<div>
+    <table>
+        <thead>
+        <th style="width: 1%;">№</th>
+        <th style="width: 5%">ID товара</th>
+        <th style="width: 5%">Категория</th>
+        <th style="width: 40%">Наименование</th>
+        </thead>
+        <tbody>
+        {% for item in card.ooo.all %}
+            <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.object.id }}</td>
+            <td>{{ item.object.category }}</td>
+            <td>{{ item.object }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+    </ul>
+</div>

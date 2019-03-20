@@ -1,0 +1,144 @@
+{% extends "shop/base_index.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb_area bg-img" style="background-image: url({% static 'img/bg-img/breadcumb.jpg' %});">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="page-title text-center">
+                    <h2>Товары для <span style="color:#dc0345">{{ brand }}</span> </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcumb Area End ##### -->
+
+<!-- ##### Shop Grid Area Start ##### -->
+<section class="shop_grid_area section-padding-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="shop_sidebar_area">
+
+                    <!-- ##### Single Widget ##### -->
+                    <div class="widget catagory mb-50">
+                        <!-- Widget Title -->
+                        <h6 class="widget-title mb-30">Категории</h6>
+
+                        <!--  Catagories  -->
+                        <div class="catagories-menu">
+                            <ul id="menu-content2" class="menu-content collapse show">
+                                <!-- Single Item -->
+                                {% for category in categorys %}
+                                    {% for i in category.what_brand.all %}
+                                        <li data-toggle="collapse" data-target="#{{ i.title|lower }}" class="collapsed">
+                                            <a href="#">{{ i.title }}</a>
+                                            
+                                                <ul class="sub-menu collapse" id="{{ i.title|lower }}">
+                                                    {% for model in i.phone_models.all %}
+                                                    <li><a href="{% url 'shop:shop_page_model_url' cat_ i.slug model.slug %}">{{ model.title }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            
+                                        </li>
+                                    {% endfor %}
+
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- ##### Single Widget FILTER BY ##### -->
+
+                    <!-- ##### Single Widget COLOR ##### -->
+
+
+                    <!-- ##### Single Widget BRANDS ##### -->
+
+                </div>
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-9">
+                <div class="shop_grid_product_area">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product-topbar d-flex align-items-center justify-content-between">
+                                <!-- Total Products -->
+                                <div class="total-products">
+                                    <p><span>{{ p_count }}</span> Продуктов найдено</p>
+                                </div>
+                                <!-- Sorting -->
+                                <div class="product-sorting d-flex">
+                                    <p>Сортировка:</p>
+                                    <form action="#" method="get">
+                                        <select name="select" id="sortByselect">
+                                            {% if request.session.order_by == 'price' %}
+
+                                                <option value="price">Дешевые в начале</option>
+                                                <option value="price-desc">Дорогие в начале</option>
+                                                <option value="create_date">Самые новые</option>
+
+                                            {% elif request.session.order_by == 'price-desc' %}
+
+                                                <option value="price-desc">Дорогие в начале</option>
+                                                <option value="price">Дешевые в начале</option>
+                                                <option value="create_date">Самые новые</option>
+
+                                            {% elif request.session.order_by == 'create_date' %}
+
+                                                <option value="create_date">Самые новые</option>
+                                                <option value="price">Дешевые в начале</option>
+                                                <option value="price-desc">Дорогие в начале</option>
+
+                                            {% else %}
+
+                                                <option value="create_date">Самые новые</option>
+                                                <option value="price">Дешевые в начале</option>
+                                                <option value="price-desc">Дорогие в начале</option>
+
+                                            {% endif %}
+
+                                        </select>
+                                        <input type="submit" class="d-none" value="">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row items_shop">
+
+                        {% include 'shop/include/item_in_shop.html' %}
+                    
+                    </div>
+                </div>
+
+
+                <!-- Pagination -->
+                <nav aria-label="navigation">
+                    <ul class="pagination mt-50 mb-70">
+						{% if products.has_previous %}
+						<li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}"><i class="fa fa-angle-left"></i></a></li>
+						<li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>
+						{% endif %}
+						<li class="page-item"><a class="page-link qqq" href="?page={{ products.number }}">{{ products.number }}</a></li>
+						{% if products.has_next %}
+						<li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
+						<li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}"><i class="fa fa-angle-right"></i></a></li>
+						{% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Shop Grid Area End ##### -->
+
+
+
+{% endblock content %}
+

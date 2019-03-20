@@ -1,0 +1,38 @@
+{% extends "shop/base_index.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<!-- ##### Breadcumb Area Start ##### -->
+<div class="breadcumb_area bg-img" style="background-image: url({% static 'img/bg-img/breadcumb.jpg' %});">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="page-title text-center">
+                    <h2>Выберите бренд</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="top_catagory_area section-padding-80 clearfix">
+        <div class="container">
+            <div class="row justify-content-center">
+            	{% for item in menu_s %}
+	            	{% for i in item.what_brand.all %}
+	            		<!-- Single Catagory -->
+	            		<div class="col-12 col-sm-6 col-md-4">
+	            		    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/bg-2.jpg);">
+	            		        <div class="catagory-content">
+	            		            <a href="/category/{{ item.slug }}/{{ i.slug }}/">{{ i.title }}</a>
+	            		        </div>
+	            		    </div>
+	            		</div>
+	            	{% endfor %}    
+	            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

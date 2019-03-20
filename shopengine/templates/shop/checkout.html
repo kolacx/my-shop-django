@@ -1,0 +1,134 @@
+{% extends 'shop/base_index.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <div class="breadcumb_area bg-img" style="background-image: url({% static 'img/bg-img/breadcumb.jpg' %});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="page-title text-center">
+                        <h2>Оформление заказа</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Checkout Area Start ##### -->
+    <div class="checkout_area section-padding-80">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-md-6">
+                    <div class="checkout_details_area mt-50 clearfix">
+
+                        <div class="cart-page-heading mb-30">
+                            <h5>Адресс доставки</h5>
+                        </div>
+
+                        <form action="#" method="post" id="buy_form">
+                            {% csrf_token %}
+                            <input type="hidden" name="total_price" value="{{ cart.cart_total }}">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="first_name">Имя <span></span></label>
+                                    <input type="text" class="form-control" id="first_name" value=""  name="name">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="last_name">Фамилия <span></span></label>
+                                    <input type="text" class="form-control" id="last_name" value=""  name="last_name">
+                                </div>
+<!--                                 <div class="col-12 mb-3">
+                                    <label for="country">Country <span>*</span></label>
+                                    <select class="w-100" id="country">
+                                        <option value="usa">United States</option>
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="ger">Germany</option>
+                                        <option value="fra">France</option>
+                                        <option value="ind">India</option>
+                                        <option value="aus">Australia</option>
+                                        <option value="bra">Brazil</option>
+                                        <option value="cana">Canada</option>
+                                    </select>
+                                </div> -->
+                                <div class="col-md-6 mb-3">
+                                    <label for="city">Ваш Город <span></span></label>
+                                    <input type="text" class="form-control" id="city" value=""  name="city">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="new_poch">Номер отделения Новой почты <span></span></label>
+                                    <input type="text" class="form-control" id="new_poch" value=""  name="new_poch">
+                                </div>
+                               <!--  <div class="col-12 mb-3">
+                                    <label for="postcode">Postcode <span>*</span></label>
+                                    <input type="text" class="form-control" id="postcode" value="">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="city">Town/City <span>*</span></label>
+                                    <input type="text" class="form-control" id="city" value="">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="state">Province <span>*</span></label>
+                                    <input type="text" class="form-control" id="state" value="">
+                                </div> -->
+                                <div class="col-12 mb-3 field">
+                                    <label for="phone_number">Мобильный номер телефона <span>*</span></label>
+                                    <input type="tel" class="form-control " id="phone_number" min="0" value="" name="phone" required="required">
+                                </div>
+<!-- 
+                                <div class="col-12">
+                                    <div class="custom-control custom-checkbox d-block mb-2">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Terms and conitions</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox d-block mb-2">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                        <label class="custom-control-label" for="customCheck2">Create an accout</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox d-block">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                        <label class="custom-control-label" for="customCheck3">Subscribe to our newsletter</label>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                    <div class="order-details-confirmation">
+
+                        <div class="cart-page-heading">
+                            <h5>Ваш заказ</h5>
+                            <p>Детали заказа</p>
+                        </div>
+
+                        <ul class="order-details-form mb-4">
+                            <li><span>Ваш(и) товар(ы)</span> <span>Сумма</span></li>
+                            {% for item in cart.items.all %}
+                                <li><span>{{item.product.head_title}}</span> 
+                                    {% if item.product.in_sale == True %}
+                                        <span>{{item.product.sale_price}} грн</span>
+                                    {% else %}
+                                        <span>{{item.product.price}} грн</span>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                            <li><span>Общая сумма</span> <span>{{ cart.cart_total }} грн</span></li>
+                        </ul>
+
+                        <a href="" class="btn essence-btn mt-1" id="buy">Оформить заказ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Checkout Area End ##### -->
+</body>
+
+</html>
+{% endblock content %}

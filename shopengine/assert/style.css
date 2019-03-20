@@ -1,0 +1,181 @@
+    /* ####################################################
+    :: Template Name: Essence - Fashion Ecommerce Template
+    :: Author: Colorlib
+    :: Author URL: https://colorlib.com
+    :: Description: Essence is smart & elegant fashion e-commerce Template. It's suitable for all e-commerce business platform.
+    :: Version: 1.0.0
+    :: Created: April 27, 2018
+    :: Last Updated: May 2, 2018
+    #################################################### */
+
+    /* ---------------------------------------
+    ##### - PLACE YOUR CUSTOM CSS HERE - #####
+    --------------------------------------- */
+body{
+  transition: all 0.3s;
+}
+.pre{
+  opacity: 0;
+}
+
+    .single_catagory_area .catagory-content a{
+        text-align: center;
+    }
+
+    .right-side-cart-area .cart-content .cart-list .single-cart-item .product-image .cart-item-desc{
+        padding: 25px 15px 15px;
+    }
+.floating-cart .add_to_fav{
+  display: none;
+}
+.floating-cart .carousel__item{
+  left: 0 !important;
+  top: 0 !important;
+}
+
+div.floating-cart{
+  background-color: #fff;
+  box-shadow: 0px 0px 50px 0px rgba(18, 117, 117, 0.2);
+  position: fixed;
+  top: 0;
+  height: auto;
+  z-index: 500;
+  display: none;
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+}
+div.floating-cart .carousel__item{
+  width: 100%!important;
+}
+div.floating-cart.moveToFav,
+div.floating-cart.moveToCart{
+  box-shadow: 0px 0px 50px 0px rgba(18, 117, 117, 0.1);  
+  -webkit-transform: scale(.4);
+  transform: scale(.4);
+  -webkit-transition: all 800ms ease-in-out;
+     -moz-transition: all 800ms ease-in-out;
+    -ms-transition: all 800ms ease-in-out;
+     -o-transition: all 800ms ease-in-out;
+        transition: all 800ms ease-in-out; 
+}
+body.MakeFloatingCart div.floating-cart.moveToFav,
+body.MakeFloatingCart div.floating-cart.moveToCart{   
+  -webkit-transform: scale(.15);
+  transform: scale(.15);
+  box-shadow: 0px 0px 50px 0px rgba(18, 117, 117, 0.05);
+  -webkit-transition: all 200ms ease-out;
+     -moz-transition: all 200ms ease-out;
+    -ms-transition: all 200ms ease-out;
+     -o-transition: all 200ms ease-out;
+        transition: all 200ms ease-out;
+}
+
+div.floating-cart.moveToFav{
+  right: 120px !important;
+  top: 100px !important;
+}
+body.MakeFloatingCart div.floating-cart.moveToFav{
+  right: 120px !important;
+  top: 50px !important;
+}
+
+div.floating-cart.moveToCart{
+  right: 40px !important;
+  top: 100px !important;
+}
+body.MakeFloatingCart div.floating-cart.moveToCart{
+  right: 40px !important;
+  top: 50px !important;
+}
+
+.essence-btn{
+  font-size: 10px;
+}
+a:hover, a:focus{
+  font-size: 10px;
+}
+
+.modal-footer{
+  border-top: none;
+}
+
+.cart-bg-overlay.cart-bg-overlay-on{
+  z-index: 1000;
+}
+
+.right-side-cart-area{
+  z-index: 1040;
+}
+
+.checkout-btn .btn{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.allert {
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  display: block;
+  right: 10px;
+  height: 20px;
+  color: #FF6565;
+  cursor: default;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.allert:hover{
+  text-decoration: none;
+}                 
+.allert span{
+  display: none;
+  opacity: 0;
+  padding: 5px 7px;
+  margin-left: 5px;
+  color: red;
+  font-size: 12px;
+  border-radius: 4px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  min-width: 140px;
+  text-align: left;
+}
+.allert:hover span{
+  border: 1px solid #FF6565;
+  background: #fff;
+  display: inline;
+  position: absolute;
+  color: #4e4e4e;
+  right:24px;
+  top:-6px;
+  opacity: 1;
+}
+
+.allert .warning_ico,
+.allert i{
+  left:inherit;
+  top:0;
+  color:red;
+}
+.warning_ico{
+  width: 18px;
+  height: 18px;
+}
+
+.error input{
+  border-color: red !important;
+}
+
+.fields_group{
+  position: relative;
+}
+
+.welcome_area{
+  height: 700px;
+}
