@@ -356,6 +356,8 @@ def buy(request):
 			p_item.object = item.product
 			p_item.order = order
 			p_item.save()
+
+			# asd
 		
 		order.save()
 
