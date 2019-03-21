@@ -5,6 +5,7 @@
         <th style="width: 5%">ID товара</th>
         <th style="width: 5%">Категория</th>
         <th style="width: 40%">Наименование</th>
+        <th style="width: 5%">Стоимость</th>
         </thead>
         <tbody>
         {% for item in card.ooo.all %}
@@ -13,6 +14,11 @@
             <td>{{ item.object.id }}</td>
             <td>{{ item.object.category }}</td>
             <td>{{ item.object }}</td>
+            {% if item.object.in_sale == True %}
+                <td>{{ item.object.sale_price }}</td>
+            {% else %}
+                <td>{{ item.object.price }}</td>
+            {% endif %}
             </tr>
         {% endfor %}
         </tbody>
