@@ -179,3 +179,10 @@ a:hover, a:focus{
 .welcome_area{
   height: 700px;
 }
+
+@media only screen and (max-width: 767px){
+  .my_btn_w{
+    width: 100%;
+    margin-top: 15px;
+  }
+}
