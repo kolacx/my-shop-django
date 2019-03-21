@@ -342,8 +342,6 @@ def buy(request):
 		order = Order()
 		order.save()
 
-		
-
 		order.name = request.POST.get('name')
 		order.last_name = request.POST.get('last_name')
 		order.city = request.POST.get('city')
