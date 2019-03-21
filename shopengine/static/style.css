@@ -186,7 +186,7 @@ a:hover, a:focus{
     margin-top: 15px;
   }
   .hover-content{
-    opacity: 1;
-    visibility: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
