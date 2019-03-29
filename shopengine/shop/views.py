@@ -377,7 +377,11 @@ def buy_one_click(request):
 		order.status = 'ONECLICK'
 
 		for item in cart.items.all():
-			order.items.add(item)
+			p_item = PropertyOrder()
+			p_item.object = item.product
+			p_item.order = order
+			p_item.save()
+			# order.items.add(item)
 		
 		order.save()
 		
@@ -419,7 +423,11 @@ def buy_one_click_one(request):
 		order.status = 'ONECLICK'
 
 		for item in cart.items.all():
-			order.items.add(item)
+			p_item = PropertyOrder()
+			p_item.object = item.product
+			p_item.order = order
+			p_item.save()
+			# order.items.add(item)
 		
 		order.save()
 		
