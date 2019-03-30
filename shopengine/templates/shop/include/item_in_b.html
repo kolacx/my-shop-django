@@ -1,6 +1,6 @@
                 {% for p in cart.items.all %}
                 <div class="single-cart-item">
-                    <a href=" {{ p.product.get_absolute_url }}" class="product-image">
+                    <a href="{{ p.product.get_absolute_url }}" class="product-image">
                         <img src="{{ p.product.image.url }}" class="cart-thumb" alt="">
                         <!-- Cart Item Desc -->
                         <div class="cart-item-desc">

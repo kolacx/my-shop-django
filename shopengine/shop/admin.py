@@ -23,7 +23,7 @@ admin.site.register(Category)
 admin.site.register(ModelPhone)
 admin.site.register(Menu)
 # admin.site.register(CartItem)
-# admin.site.register(Card)
+admin.site.register(Card)
 admin.site.register(MainPage)
 # admin.site.register(Order)
 
