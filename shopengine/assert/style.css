@@ -191,11 +191,11 @@ a:hover, a:focus{
   }
 
   .widget.price .ui-slider-horizontal{
-    height: 10px;
+    height: 7px;
   }
 
   .widget.price .ui-slider-handle{
-    width: 6px;
-    height: 20px;
+    width: 5px;
+    height: 18px;
   }
 }
