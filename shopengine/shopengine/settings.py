@@ -123,6 +123,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+# 825206125:AAHFpSIRvzriJqDW-oBShL23a_-wE9SUoE8
+
+TELEGRAM_CHAT_ID = '-328928770'
+
+TELEGRAM_BOT_ID = '825206125:AAHFpSIRvzriJqDW-oBShL23a_-wE9SUoE8'
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 

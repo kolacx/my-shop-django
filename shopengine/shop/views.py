@@ -7,6 +7,8 @@ from .models import Product, Category, ModelPhone, Menu, CartItem, Card, Order, 
 from .forms import OrderForm
 from decimal import *
 
+from .telegram import send_message
+
 # Create your views here.
 
 def main_page(request):
@@ -376,6 +378,8 @@ def buy(request):
 		
 		order.save()
 
+		send_message(render_to_string("telegram/mess.txt", context={ 'cart' : cart, 'order' : order }))
+
 		del request.session['cart_id']
 		
 		return JsonResponse({'status': '200'})
@@ -403,6 +407,8 @@ def buy_one_click(request):
 			# order.items.add(item)
 		
 		order.save()
+
+		send_message(render_to_string("telegram/mess.txt", context={ 'cart' : cart, 'order' : order }))
 		
 		del request.session['cart_id']
 
@@ -449,6 +455,8 @@ def buy_one_click_one(request):
 			# order.items.add(item)
 		
 		order.save()
+
+		send_message(render_to_string("telegram/mess.txt", context={ 'cart' : cart, 'order' : order }))
 		
 		return JsonResponse({'status': '200'})
 	else:
