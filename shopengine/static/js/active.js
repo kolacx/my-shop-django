@@ -110,9 +110,11 @@
             max: max,
             values: [value_min, value_max],
             slide: function (event, ui) {
-                var result = label_result + " " + unit + ui.values[0] + ' - ' + unit + ui.values[1];
+                var result = label_result + " " + ui.values[0] + ' - ' + ui.values[1] + ' ' + unit;
                 console.log(t);
                 t.closest('.slider-range').find('.range-price').html(result);
+                t.closest('.slider-range').find('#price_min').html(ui.values[0])
+                t.closest('.slider-range').find('#price_max').html(ui.values[1])
             }
         });
     });
@@ -388,6 +390,15 @@
 
       var a = $('.page-link').href;
 
+      var p_min = $('#price_min').text();      
+      var p_max = $('#price_max').text();   
+
+      p_min = +p_min - 1;
+      p_max = +p_max + 1;
+
+      console.log(p_min);   
+      console.log(p_max);   
+
       var urlParams = new URLSearchParams(window.location.search);
       var myParam = urlParams.get('page');
 
@@ -397,12 +408,12 @@
         myParam = '1'
       }
 
-      console.log(myParam)
-
       var data = {
         'order_by': data_value,
         'ajax': 'True',
-        'page': myParam
+        'page': myParam,
+        'p_min' : p_min,
+        'p_max' : p_max
       }
 
       $.ajax({
