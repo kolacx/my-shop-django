@@ -385,8 +385,10 @@
         }
     });
 
-    $('.nice-select li').on('click', function(){
+    $('.nice-select li, #filter_go').on('click', function(){
+
       var data_value = $(this).attr('data-value');
+      $('#filter_go').attr('data-value', data_value)
 
       var a = $('.page-link').href;
 
