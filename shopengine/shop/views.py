@@ -178,8 +178,8 @@ def shop_page(request, category, brand):
 		'cart' : cart,
 		'brand': brand,
 		'p_count' : len(products_all),
-		'p_min' : prices['min'],
-		'p_max' : prices['max']
+		'p_min' : int(prices['min']),
+		'p_max' : int(prices['max'])
 	}
 	return	render(request, 'shop/shop_page.html', context)
 
@@ -274,8 +274,8 @@ def shop_page_model(request, category, brand, product):
 		'cart' : cart,
 		'brand': product,
 		'p_count' : len(products_all),
-		'p_min' : prices['min'],
-		'p_max' : prices['max']
+		'p_min' : int(prices['min']),
+		'p_max' : int(prices['max'])
 	}
 
 	return	render(request, 'shop/shop_page.html', context)
