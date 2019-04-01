@@ -189,4 +189,13 @@ a:hover, a:focus{
     opacity: 1 !important;
     visibility: visible !important;
   }
+
+  .widget.price .ui-slider-horizontal{
+    height: 10px;
+  }
+
+  .widget.price .ui-slider-handle{
+    width: 6px;
+    height: 20px;
+  }
 }
