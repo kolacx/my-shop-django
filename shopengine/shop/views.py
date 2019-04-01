@@ -1,3 +1,4 @@
+from django.db.models import Min, Max
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator
@@ -111,6 +112,7 @@ def shop_page(request, category, brand):
 	get_menu_category = Menu.objects.get(slug=category)
 
 	products = Product.objects.filter(menu=get_menu_category, category=get_cat, is_active=True)
+	prices = Product.objects.filter(menu=get_menu_category, category=get_cat, is_active=True).aggregate(min=Min('price'), max=Max('price'))
 	products_all = Product.objects.filter(menu=get_menu_category, category=get_cat, is_active=True)
 
 	ajax_true = request.GET.get('ajax')
@@ -120,6 +122,12 @@ def shop_page(request, category, brand):
 
 	if ajax_true == 'True':
 		order_by = request.GET.get('order_by')
+
+		p_min = request.GET.get('p_min')
+		p_max = request.GET.get('p_max')
+
+		products = products.filter(price__gt=int(p_min))
+		products = products.filter(price__lt=int(p_max))
 
 		if order_by == 'price':
 			products = products.order_by('price')
@@ -169,7 +177,9 @@ def shop_page(request, category, brand):
 		'cat_' : cat_,
 		'cart' : cart,
 		'brand': brand,
-		'p_count' : len(products_all)
+		'p_count' : len(products_all),
+		'p_min' : prices['min'],
+		'p_max' : prices['max']
 	}
 	return	render(request, 'shop/shop_page.html', context)
 
@@ -197,6 +207,7 @@ def shop_page_model(request, category, brand, product):
 	get_mp = ModelPhone.objects.get(slug=product)
 
 	products = Product.objects.filter(menu=get_menu, category=get_cat, model_phone=get_mp, is_active=True)
+	prices = Product.objects.filter(menu=get_menu, category=get_cat, model_phone=get_mp, is_active=True).aggregate(min=Min('price'), max=Max('price'))
 	products_all = Product.objects.filter(menu=get_menu, category=get_cat, is_active=True)
 
 	ajax_true = request.GET.get('ajax')
@@ -206,6 +217,12 @@ def shop_page_model(request, category, brand, product):
 
 	if ajax_true == 'True':
 		order_by = request.GET.get('order_by')
+
+		p_min = request.GET.get('p_min')
+		p_max = request.GET.get('p_max')
+
+		products = products.filter(price__gt=int(p_min))
+		products = products.filter(price__lt=int(p_max))
 
 		if order_by == 'price':
 			products = products.order_by('price')
@@ -256,7 +273,9 @@ def shop_page_model(request, category, brand, product):
 		'get_menu' : get_menu_all,
 		'cart' : cart,
 		'brand': product,
-		'p_count' : len(products_all)
+		'p_count' : len(products_all),
+		'p_min' : prices['min'],
+		'p_max' : prices['max']
 	}
 
 	return	render(request, 'shop/shop_page.html', context)

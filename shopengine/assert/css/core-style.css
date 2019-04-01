@@ -1225,7 +1225,7 @@ img {
   .widget.price .range-price {
     font-size: 12px;
     font-weight: 600;
-    margin-top: 15px;
+    margin-bottom: 15px;
     text-transform: uppercase; }
   .widget.color .widget-desc ul {
     -ms-flex-wrap: wrap;
