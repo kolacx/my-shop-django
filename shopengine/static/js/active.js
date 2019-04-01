@@ -172,6 +172,12 @@
         }, 5000);
     }
 
+    function scroll_to_element(){
+      $([document.documentElement, document.body]).animate({
+          scrollTop: $("#shop_scrol").offset().top-80
+      }, 2000);
+    }
+
     $('.add_to_b').on('click', function(e){
         var id = $(this).attr("data-id");
 
@@ -425,6 +431,12 @@
         success: function(data){
           // console.log(data.html);
           $('.items_shop').html(data.html);
+
+          if (window.innerWidth < 500) {
+            scroll_to_element();
+          }
+          
+
         }
       })
     })
