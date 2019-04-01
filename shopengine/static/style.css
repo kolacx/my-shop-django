@@ -198,4 +198,7 @@ a:hover, a:focus{
     width: 5px;
     height: 18px;
   }
+  .footer-logo{
+    display: none;
+  }
 }
