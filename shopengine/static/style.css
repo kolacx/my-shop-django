@@ -201,4 +201,17 @@ a:hover, a:focus{
   .footer-logo{
     display: none;
   }
+  .footer_area .single_widget_area .footer_menu ul li a{
+    font-size: 14px;
+  }
+
+  .right-side-cart-area .cart-content .cart-list .single-cart-item .product-image .cart-item-desc .badge{
+    display: none;
+  }
+  .right-side-cart-area .cart-content .cart-list .single-cart-item .product-image .cart-item-desc h6{
+    display: none;
+  }
+  .right-side-cart-area .cart-content .cart-list .single-cart-item .product-image .cart-item-desc{
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
