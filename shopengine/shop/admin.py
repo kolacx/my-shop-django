@@ -17,7 +17,7 @@ class PropertyAdmin(admin.ModelAdmin):
     inlines = [ PropertyImageInline, ]
     list_display = ('head_title', 'id', 'is_active', 'in_sale', 'is_new', 'price', 'sale_price')
     list_filter = ('is_active', 'in_sale', 'is_new',)
-    # list_editable = ('is_active', 'in_sale', 'is_new',)
+    list_editable = ('is_active', 'in_sale', 'is_new',)
 
 admin.site.register(Category)
 admin.site.register(ModelPhone)

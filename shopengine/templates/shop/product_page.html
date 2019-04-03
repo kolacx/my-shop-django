@@ -27,7 +27,7 @@
                     <span class="old-price">{{ products.price }} грн</span>{{ products.sale_price }} грн
                 </p>
             {% else %}
-                <p class="product-price">{{ products.price }}</p>
+                <p class="product-price">{{ products.price }} грн</p>
             {% endif %}
             <p>Арт. {{ products.id }}</p>
             <p class="product-desc">{{ products.specifications|safe }}</p>

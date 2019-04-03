@@ -199,7 +199,8 @@
 
     })
 
-    $( "body" ).delegate( ".product-remove", "click", function() {
+    $( "body" ).delegate( ".product-remove", "click", function(e) {
+      e.preventDefault();
       console.log('click remove');
       var id = $(this).attr("data-id");
 

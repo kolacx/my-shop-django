@@ -105,6 +105,8 @@ def shop_page(request, category, brand):
 		request.session['cart_id'] = cart_id
 		cart = Card.objects.get(id=cart_id)
 
+	# req_brand = ModelPhone.objects.get(slug=brand)
+
 	cat_ = category
 	categorys = Menu.objects.filter(slug=category)
 	model_phones = ModelPhone.objects.all()
@@ -197,7 +199,7 @@ def shop_page_model(request, category, brand, product):
 		request.session['cart_id'] = cart_id
 		cart = Card.objects.get(id=cart_id)
 
-	
+	req_brand = ModelPhone.objects.get(slug=product)
 	cat_ = category
 	categorys = Menu.objects.filter(slug=category)
 	model_phones = ModelPhone.objects.all()
@@ -274,7 +276,7 @@ def shop_page_model(request, category, brand, product):
 		'cat_' : cat_,
 		'get_menu' : get_menu_all,
 		'cart' : cart,
-		'brand': product,
+		'brand': req_brand,
 		'p_count' : len(products_all),
 		'p_min' : int(prices['min']),
 		'p_max' : int(prices['max'])
