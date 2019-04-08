@@ -21,7 +21,8 @@ from .views import *
 app_name = 'shop'
 
 urlpatterns = [
-	path('', main_page, name='main_page_url'),
+    path('', main_page, name='main_page_url'),
+	path('delivery/', delivery_page, name='delivery_url'),
     path('add_to_cart/', add_to_cart_view, name='add_to_cart_url'),
 	path('remove_from_cart/', remove_from_cart_view, name='remove_from_cart_view_url'),
     path('checkout/', checkout, name='checkout_url'),

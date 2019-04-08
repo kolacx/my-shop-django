@@ -16,9 +16,20 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.sitemaps.views import sitemap
+from shopengine.sitemaps import ProductSitemap, MenuSitemap, StaticViewSitemap
+from shop.views import robots
+
+sitemaps = {
+    'product': ProductSitemap,
+    'menu': MenuSitemap,
+    'static' : StaticViewSitemap
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt/', robots),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('shop.urls')),
 ]

@@ -1,0 +1,20 @@
+{% extends 'shop/base_index.html'  %}
+
+{% block content %}
+
+<div class="single-blog-post-thumb">
+	<img src="img/bg-img/bg-8.jpg" alt="">
+</div>
+
+<div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="regular-page-content-wrapper section-padding-80">
+                        <div class="regular-page-text">
+                        	{{ delivery.delivery_info|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

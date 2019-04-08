@@ -2,7 +2,7 @@ from django.contrib import admin
 import decimal
 from django.utils.html import format_html
 from django.template.loader import render_to_string
-from .models import Product, Category, ModelPhone, Menu, CartItem, Card, Order, PropertyImage, MainPage, PropertyOrder
+from .models import Product, Category, ModelPhone, Menu, CartItem, Card, Order, PropertyImage, MainPage, PropertyOrder, DeliveryPage
 
 class PropertyImageInline(admin.TabularInline):
     model = PropertyImage
@@ -25,6 +25,7 @@ admin.site.register(Menu)
 # admin.site.register(CartItem)
 admin.site.register(Card)
 admin.site.register(MainPage)
+admin.site.register(DeliveryPage)
 # admin.site.register(Order)
 
 

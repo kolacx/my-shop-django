@@ -3,13 +3,42 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import Product, Category, ModelPhone, Menu, CartItem, Card, Order, MainPage, PropertyOrder
+from .models import Product, Category, ModelPhone, Menu, CartItem, Card, Order, MainPage, PropertyOrder, DeliveryPage
 from .forms import OrderForm
 from decimal import *
 
 from .telegram import send_message
 
 # Create your views here.
+
+def robots(request):
+	return render(request, 'robots.txt', content_type="text/plain")
+
+def delivery_page(request):
+
+	try:
+		cart_id = request.session['cart_id']
+		cart = Card.objects.get(id=cart_id)
+		request.session['total'] = cart.items.count()
+	except:
+		cart = Card()
+		cart.save()
+		cart_id = cart.id
+		request.session['cart_id'] = cart_id
+		cart = Card.objects.get(id=cart_id)
+
+	delivery = DeliveryPage.objects.get()
+	get_menu = Menu.objects.all()
+	get_brands = Category.objects.all()
+
+	context = {
+		'delivery' : delivery,
+		'get_brands': get_brands,
+		'get_menu' : get_menu,
+		'cart' : cart,
+	}
+
+	return render(request, 'shop/delivery.html', context=context)
 
 def main_page(request):
 	try:
@@ -32,8 +61,11 @@ def main_page(request):
 
 	content_main_page = MainPage.objects.all()
 
+	delivery = DeliveryPage.objects.get()
+
 	context = {
 		'get_menu' : get_menu,
+		'delivery' : delivery,
 		'cart' : cart,
 		'products_sale': products_sale,
 		'products_new': products_new,
@@ -59,8 +91,11 @@ def cat_brand(request, menu_slug):
 
 	get_menu = Menu.objects.all()
 
+	delivery = DeliveryPage.objects.get()
+
 	context = {
 		'menu_s': menu_s,
+		'delivery' : delivery,
 		'get_menu' : get_menu,
 		'cart' : cart,
 	}
@@ -84,8 +119,11 @@ def show_product_card(request, sub_category, product):
 	image_list = product.images.all()
 	get_menu = Menu.objects.all()
 
+	delivery = DeliveryPage.objects.get()
+
 	context = {
 		'products' : product,
+		'delivery' : delivery,
 		'get_menu' : get_menu,
 		'cart' : cart,
 		'image_list': image_list
@@ -115,7 +153,7 @@ def shop_page(request, category, brand):
 	get_cat = Category.objects.get(slug=brand)
 	get_menu_category = Menu.objects.get(slug=category)
 
-	products = Product.objects.filter(menu=get_menu_category, category=get_cat, is_active=True)
+	products = Product.objects.filter(menu=get_menu_category, category=get_cat, is_active=True).order_by('id')
 	prices = Product.objects.filter(menu=get_menu_category, category=get_cat, is_active=True).aggregate(min=Min('price'), max=Max('price'))
 	products_all = Product.objects.filter(menu=get_menu_category, category=get_cat, is_active=True)
 
@@ -173,8 +211,11 @@ def shop_page(request, category, brand):
 
 	products = paginator.get_page(page)
 
+	delivery = DeliveryPage.objects.get()
+
 	context = {
 		'products' : products,
+		'delivery' : delivery,
 		'categorys' : categorys,
 		'model_phones' : model_phones,
 		'get_menu' : get_menu,
@@ -210,7 +251,7 @@ def shop_page_model(request, category, brand, product):
 	get_cat = Category.objects.get(slug=brand)
 	get_mp = ModelPhone.objects.get(slug=product)
 
-	products = Product.objects.filter(menu=get_menu, category=get_cat, model_phone=get_mp, is_active=True)
+	products = Product.objects.filter(menu=get_menu, category=get_cat, model_phone=get_mp, is_active=True).order_by('id')
 	prices = Product.objects.filter(menu=get_menu, category=get_cat, model_phone=get_mp, is_active=True).aggregate(min=Min('price'), max=Max('price'))
 	products_all = Product.objects.filter(menu=get_menu, category=get_cat, is_active=True)
 
@@ -267,9 +308,12 @@ def shop_page_model(request, category, brand, product):
 		pass
 
 	products = paginator.get_page(page)
+
+	delivery = DeliveryPage.objects.get()
 	
 	context = {
 		'products' : products,
+		'delivery' : delivery,
 		'categorys' : categorys,
 		'model_phones' : model_phones,
 		'get_menu_all' : get_menu_all,
@@ -349,8 +393,11 @@ def checkout(request):
 
 	cart = Card.objects.get(id=cart_id)
 
+	delivery = DeliveryPage.objects.get()
+
 	context = {
 		'cart': cart,
+		'delivery' : delivery,
 		'get_menu' : get_menu_all,
 	}
 

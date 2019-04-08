@@ -7,6 +7,12 @@ from django.contrib.contenttypes.models import ContentType
 
 # Create your models here.
 
+class DeliveryPage(models.Model):
+	delivery_info = RichTextField(verbose_name='Текст о доставке')
+
+	def get_absolute_url(self):
+		return reverse('shop:delivery_url')
+
 class MainPage(models.Model):
 	head_image = models.ImageField(upload_to='products')
 	sub_head_text = models.CharField(max_length=200, verbose_name='Подзаголовок', blank=True)
@@ -75,7 +81,7 @@ class Menu(models.Model):
 		verbose_name_plural = "Категории"
 
 	def get_absolute_url(self):
-		return reverse('shop:shop_page_model_url', kwargs={'slug':self.slug})
+		return reverse('shop:cat_brand_url', kwargs={'menu_slug':self.slug})
 
 	def __str__(self):
 		return self.title
