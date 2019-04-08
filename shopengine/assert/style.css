@@ -184,6 +184,10 @@ a:hover, a:focus{
   white-space: inherit;
 }
 
+.single-product-wrapper .product-img{
+  min-height: 260px;
+}
+
 @media only screen and (max-width: 767px){
   .my_btn_w{
     width: 100%;
