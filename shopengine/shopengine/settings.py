@@ -145,7 +145,7 @@ STATICFILES_DIRS = [
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-# try:
-#     from .settings_prod import *
-# except:
-#     pass
+try:
+    from .settings_prod import *
+except:
+    pass
