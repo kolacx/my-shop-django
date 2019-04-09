@@ -1,13 +1,13 @@
 DEBUG = False
 
-ALLOWED_HOSTS = ['ais.od.ua']
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangodb',
-        'USER': 'django-user-db',
-        'PASSWORD': 'qwerty1234',
+        'NAME': 'db1',
+        'USER': 'db_user_django',
+        'PASSWORD': 'XPSP@$#$**)*',
         'HOST': 'localhost',
         'PORT': '',
     }
