@@ -1,6 +1,6 @@
-# DEBUG = False
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['ais.od.ua']
 
 DATABASES = {
     'default': {
