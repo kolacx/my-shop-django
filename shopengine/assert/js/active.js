@@ -267,6 +267,7 @@
                         if(data.status =='200'){
                           $('#by_one_click').modal("hide");
                           $('#by_one_click_modal').modal("hide");
+                          dataLayer.push({'event':'checkout'});
                           $('#modal_ok').modal();
                         }
                     }
@@ -325,6 +326,7 @@
                   if(data.status =='200'){
                     $('#by_one_click').modal("hide");
                     $('#by_one_click_modal').modal("hide");
+                    dataLayer.push({'event':'oneclick_buket'});
                     $('#modal_ok').modal();
                   }
               }
@@ -383,6 +385,7 @@
                   if(data.status =='200'){
                     $('#by_one_click').modal("hide");
                     $('#by_one_click_modal').modal("hide");
+                    dataLayer.push({'event':'oneclick_cart'});
                     $('#modal_ok').modal();
                   }
               }
