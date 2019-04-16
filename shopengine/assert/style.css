@@ -186,6 +186,7 @@ a:hover, a:focus{
 
 .single-product-wrapper .product-img{
   min-height: 260px;
+  max-height: 260px;
 }
 
 @media only screen and (max-width: 767px){
